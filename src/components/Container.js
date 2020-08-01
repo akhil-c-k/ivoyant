@@ -1,15 +1,22 @@
 
-import React, { Component } from 'react'
-import './container.scss'
+import React, { Component ,useState,useEffect} from 'react'
+import '../components/container.scss'
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-
+import Api from '../backendApi/db.json'
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 const Container = () => 
  {
-    
+    const [response,getData] = useState([])
+     
+    useEffect(() => {
+        fetch('../backendApi/db.json')
+        .then((response) => { return response.json()})
+        .then((data) => console.log(data) )
+    },[] )
+     
   return(
      <Layout>
     <Header className="header">
@@ -62,7 +69,7 @@ const Container = () =>
             minHeight: 280,
           }}
         >
-          Content
+           
         </Content>
       </Layout>
     </Layout>
